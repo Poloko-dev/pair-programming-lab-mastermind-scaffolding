@@ -32,6 +32,34 @@ function checkGuess(guess, solution) {
   // characters not in the right place"
   // for example, "2-1"
   //
+  const correctPosition = [];
+  const incorrectPosition = [];
+  const solutionChars = solution.split('');
+  const guessChars = guess.split(''); 
+  const solutionCount = {}; 
+  const guessCount = {};    
+
+  // Count characters in solution
+  for (var i = 0; i < solutionChars.length; i++) {
+    const char = solutionChars[i];
+    solutionCount[char] = (solutionCount[char] || 0) + 1;
+  }
+
+  // Count characters in guess
+  for (var i = 0; i < guessChars.length; i++) {
+    const char = guessChars[i];
+    guessCount[char] = (guessCount[char] || 0) + 1;
+
+  }
+  // Count correct characters in the right position
+  for (var i = 0; i < guessChars.length; i++) {
+    if (guessChars[i] === solutionChars[i]) {
+      correctPosition.push(guessChars[i]);
+      // Decrease the count in solutionCount to avoid double counting
+      solutionCount[guessChars[i]]--;
+      guessCount[guessChars[i]]--;
+    }
+  } 
 }
 
 // https://jsdoc.app
