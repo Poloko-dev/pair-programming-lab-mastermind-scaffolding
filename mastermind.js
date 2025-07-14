@@ -1,3 +1,4 @@
+//Poloko & Pusetso
 // https://jsdoc.app
 /**
  * @function checkGuess
@@ -32,17 +33,21 @@ function checkGuess(guess, solution) {
   // characters not in the right place"
   // for example, "2-1"
   //
+
+  //Final arrays that will hold the correct characters and provide the counts
   const correctPosition = [];
   const incorrectPosition = [];
+  // Split the solution and guess into arrays of characters
   const solutionChars = solution.split('');
   const guessChars = guess.split(''); 
+  // Create objects to count occurrences of each character in solution and guess
   const solutionCount = {}; 
   const guessCount = {};    
 
   // Count characters in solution
   for (var i = 0; i < solutionChars.length; i++) {
-    const char = solutionChars[i];
-    solutionCount[char] = (solutionCount[char] || 0) + 1;
+    const char = solutionChars[i]; 
+    solutionCount[char] = (solutionCount[char] || 0) + 1; 
   }
 
   // Count characters in guess
