@@ -60,6 +60,18 @@ function checkGuess(guess, solution) {
       guessCount[guessChars[i]]--;
     }
   } 
+  // Count correct characters not in the right position
+  for (var i = 0; i < guessChars.length; i++) {
+    if (guessChars[i] !== solutionChars[i] && solutionCount[guessChars[i]] > 0) {
+      incorrectPosition.push(guessChars[i]);
+      // Decrease the count in solutionCount to avoid double counting
+      solutionCount[guessChars[i]]--;
+      guessCount[guessChars[i]]--;
+    }
+  } 
+  // Return the result in the format "correct in place - correct not in place"
+  return `${correctPosition.length}-${incorrectPosition.length}`;     
+   
 }
 
 // https://jsdoc.app
